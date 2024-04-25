@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -175,50 +174,27 @@ static List <String> images = [
       child: Container(
         height: double.infinity,
         child:
-      
-      ListView.separated(
-        
-        itemBuilder: (context,index){
-          return Container(
-            margin: EdgeInsets.only(left: 20,right: 20),
-            child: Row(children: [
-              
-                //Icon(Icons.media_bluetooth_off,size: 50,),
-                Card(child: Image.asset(images[index],width: 100,height: 100,),
-                
-                ),
 
-
-                SizedBox(width: 20,),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                Text(name[index],style: TextStyle(color: Colors.white,fontSize: 20),),
-                Text(secondName[index],style: TextStyle(color: Colors.white,fontSize: 15),),
-                ],)
-
-              
-              // Column(children: [
-              //   Text(name[index],style: TextStyle(color: Colors.white),)
-              // ],)
-              ],),
+ListView.builder(
+  itemCount: name.length,
+  itemBuilder: (context, index) {
+    return ListTile(
+      // title: item.buildTitle(context),
+      // subtitle: item.buildSubtitle(context),
+      title: Text(name[index]),    
+      subtitle: Text(secondName[index]),
+      onTap: (){},
+      leading: Image.asset(images[index],width: 50,height: 50,),
+      textColor: Colors.white,
+      trailing: 
+          Icon(Icons.play_arrow,color: Colors.white,weight: 20,),
           );
-          
-          
-      
-        }, 
-        separatorBuilder: (context,index){
-          return SizedBox();
-          
-          
-          
-        }, 
-        itemCount: name.length)
-      
-      
-      ,),
-    );
-    
+  },
+),
+
+        )
+
+      );
+
   }
 }
